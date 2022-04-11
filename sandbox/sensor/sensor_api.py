@@ -72,6 +72,14 @@ class Sensor:
             except ImportError:
                 logger.warning('LiDAR dependencies are not installed', exc_info=True)
                 raise ImportError('LiDAR dependencies are not installed')
+        elif name == 'D455':
+            from .D455 import D455
+            try:
+                import pyrealsense2
+                self.Sensor = D455()
+            except ImportError:
+                logger.warning('D455 dependencies are not installed', exc_info=True)
+                raise ImportError('D455 dependencies are not installed')
 
         elif name == 'dummy':
             from .dummy import DummySensor
